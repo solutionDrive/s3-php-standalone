@@ -1,0 +1,32 @@
+{
+  "name": "solutiondrive/s3-php-standalone",
+  "description": "Can interact with AWS S3 buckets without other dependencies than PHP.",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=5.6.0",
+    "aws/aws-sdk-php": "^3.69",
+    "symfony/config": "~3.4",
+    "symfony/console": "~3.4",
+    "symfony/dependency-injection": "~3.4",
+    "symfony/yaml": "~3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "sd\\S3PhpStandalone\\": "./src"
+    }
+  },
+  "bin": [
+    "bin/sd-s3-php-standalone"
+  ],
+  "require-dev": {
+    "solutiondrive/standalone-build-tools": "^1.0.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "standalone-build-tools": {
+      "ecs-standalone.phar": "http://build-tools.cloud.solutiondrive.de/phar/coding-standard-standalone.ecs.php7.2.phar",
+      "easy-coding-standard-php5.6.yml": "http://build-tools.cloud.solutiondrive.de/phar/easy-coding-standard-php5.6.yml"
+    }
+  }
+}

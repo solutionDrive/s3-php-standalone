@@ -1,0 +1,18 @@
+{
+  "chmod": "0755",
+  "directories": [],
+  "files": [
+    "LICENSE"
+  ],
+  "finder": [
+    {
+      "name": ["sd-s3-php-standalone", "*.php", "*.xsd", "*.yml", "*.xml", "*.dist", "LICENSE", "LICENSE.md"],
+      "exclude": ["build", "etc", "spec", "box.json", "composer.*", "Tests", "tests", "*.feature", "*.dat", "*.exe", "*.bin"],
+      "in": "."
+    }
+  ],
+  "compactors": "Herrera\\Box\\Compactor\\Php",
+  "main": "bin/sd-s3-php-standalone",
+  "output": "build/sd-s3-php-standalone.phar",
+  "stub": true
+}
