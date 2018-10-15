@@ -17,8 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class DownloadCommand extends Command
 {
     /** @var S3ClientFactory */
-    private $clientFactory
-    ;
+    private $clientFactory;
 
     public function __construct(
         $clientFactory = ''
