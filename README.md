@@ -8,7 +8,7 @@ Usage
 -----
 
     sd-s3-php-standalone.phar download BUCKETNAME KEY_IN_BUCKET TARGET_FILE
-    
+
 Provide AWS IAM credentials as described in
 https://docs.aws.amazon.com/de_de/sdk-for-php/v3/developer-guide/guide_credentials.html#default-credential-chain .
 
