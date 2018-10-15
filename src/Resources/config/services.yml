@@ -1,0 +1,17 @@
+parameters:
+  env(AWS_DEFAULT_REGION): 'eu-central-1'
+  env(AWS_S3_API_VERSION): '2006-03-01'
+  env(AWS_PROFILE): 'default'
+
+services:
+  sd.command.download:
+    class: sd\S3PhpStandalone\Command\DownloadCommand
+    arguments:
+      - "@sd.factory.s3client"
+
+  sd.factory.s3client:
+    class: sd\S3PhpStandalone\Factory\S3ClientFactory
+    arguments:
+      - "%env(AWS_DEFAULT_REGION)%"
+      - "%env(AWS_S3_API_VERSION)%"
+      - "%env(AWS_PROFILE)%"
