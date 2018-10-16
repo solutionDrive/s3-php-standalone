@@ -6,3 +6,7 @@
 
 composer.lock
 vendor/
+
+build/*
+!build/.gitkeep
+
