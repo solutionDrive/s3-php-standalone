@@ -1,0 +1,39 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * Created by solutionDrive GmbH
+ *
+ * @copyright 2018 solutionDrive GmbH
+ */
+
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Create container and register compiler pass
+$containerBuilder = new ContainerBuilder();
+
+// Load services
+$yamlConfigLoader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../src'));
+$yamlConfigLoader->load('Resources/config/services.yml');
+
+$containerBuilder->compile(true);
+
+// Initialize CLI application
+$application = new Application('AWS S3 standalone client for PHP', '__VERSION__');
+$commandsClassBase = 'sd\\S3PhpStandalone\\Command';
+
+// Add all commands
+$searchFor = 'sd.command.';
+foreach ($containerBuilder->getServiceIds() as $id) {
+    if (substr($id, 0, strlen($searchFor)) === $searchFor) {
+        $command = $containerBuilder->get($id);
+        $application->add($command);
+    }
+}
+
+$application->run();
